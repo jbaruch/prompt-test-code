@@ -113,6 +113,160 @@ WORKFLOW PHASES
      - src/main/*
      - test/impl/steps/*
 
+PHASE ARTIFACTS PROTECTION
+
+1. Protection Accumulation
+   * Phase 1 artifacts PROTECTED in Phase 2+
+   * Phase 2 artifacts PROTECTED in Phase 3+
+   * Each phase LOCKS previous phase artifacts
+   * Protection is CUMULATIVE and PERMANENT
+
+2. Protected Phase 1 Files (LOCKED in Phase 2+)
+   * Context Files:
+     - product_context.md
+     - active_context.md
+     - system_architecture.md
+     - tech_context.md
+     - requirements.md
+     - test_scenarios.md
+     - technical_assumptions.md
+   * Exceptions:
+     - progress.md (MUST be updated)
+
+3. Protected Phase 2 Files (LOCKED in Phase 3+)
+   * Feature Files:
+     - test/spec/features/*.feature
+   * Contract Interfaces:
+     - test/spec/contracts/steps/*Steps.kt
+     - test/spec/contracts/domain/*.kt
+
+4. Absolute Prohibitions
+   * In Phase 2:
+     - NO changes to Phase 1 files
+     - NO new requirements
+     - NO boundary changes
+   * In Phase 3:
+     - ALL Phase 2 prohibitions PLUS
+     - NO changes to feature files
+     - NO changes to contracts
+     - NO new features/behaviors
+
+5. Implementation Constraints
+   * Each phase MUST work within:
+     - Previous phases' boundaries
+     - Locked specifications
+     - Frozen contracts
+   * NO behavior outside specifications
+   * NO alternative implementations
+   * NO workarounds or extensions
+
+6. Violation Recovery
+   * On ANY modification attempt:
+     1. STOP all work
+     2. Document violation
+     3. Return to EARLIEST affected phase
+     4. Get USER approval
+     5. Update ALL affected files
+     6. Re-approve ALL subsequent phases
+     7. Only then resume work
+   * Example:
+     - If in Phase 3 and need requirements change:
+       * Return to Phase 1
+       * Update requirements
+       * Re-do Phase 2
+       * Re-approve both phases
+       * Only then resume Phase 3
+
+7. Protection Override
+   * NONE ALLOWED
+   * Not even by USER request
+   * Must follow recovery process
+   * Must restart from earliest affected phase
+
+8. Progress Tracking
+   * progress.md MUST be updated
+   * Document phase transitions
+   * Track completion status
+   * Record issues and decisions
+
+This protection is ABSOLUTE, CUMULATIVE, and PERMANENT across ALL phasesPHASE ARTIFACTS PROTECTION
+
+1. Protection Accumulation
+   * Phase 1 artifacts PROTECTED in Phase 2+
+   * Phase 2 artifacts PROTECTED in Phase 3+
+   * Each phase LOCKS previous phase artifacts
+   * Protection is CUMULATIVE and PERMANENT
+
+2. Protected Phase 1 Files (LOCKED in Phase 2+)
+   * Context Files:
+     - product_context.md
+     - active_context.md
+     - system_architecture.md
+     - tech_context.md
+     - requirements.md
+     - test_scenarios.md
+     - technical_assumptions.md
+   * Exceptions:
+     - progress.md (MUST be updated)
+
+3. Protected Phase 2 Files (LOCKED in Phase 3+)
+   * Feature Files:
+     - test/spec/features/*.feature
+   * Contract Interfaces:
+     - test/spec/contracts/steps/*Steps.kt
+     - test/spec/contracts/domain/*.kt
+
+4. Absolute Prohibitions
+   * In Phase 2:
+     - NO changes to Phase 1 files
+     - NO new requirements
+     - NO boundary changes
+   * In Phase 3:
+     - ALL Phase 2 prohibitions PLUS
+     - NO changes to feature files
+     - NO changes to contracts
+     - NO new features/behaviors
+
+5. Implementation Constraints
+   * Each phase MUST work within:
+     - Previous phases' boundaries
+     - Locked specifications
+     - Frozen contracts
+   * NO behavior outside specifications
+   * NO alternative implementations
+   * NO workarounds or extensions
+
+6. Violation Recovery
+   * On ANY modification attempt:
+     1. STOP all work
+     2. Document violation
+     3. Return to EARLIEST affected phase
+     4. Get USER approval
+     5. Update ALL affected files
+     6. Re-approve ALL subsequent phases
+     7. Only then resume work
+   * Example:
+     - If in Phase 3 and need requirements change:
+       * Return to Phase 1
+       * Update requirements
+       * Re-do Phase 2
+       * Re-approve both phases
+       * Only then resume Phase 3
+
+7. Protection Override
+   * NONE ALLOWED
+   * Not even by USER request
+   * Must follow recovery process
+   * Must restart from earliest affected phase
+
+8. Progress Tracking
+   * progress.md MUST be updated
+   * Document phase transitions
+   * Track completion status
+   * Record issues and decisions
+
+This protection is ABSOLUTE, CUMULATIVE, and PERMANENT across ALL phases.
+
 ERROR HANDLING
 
 1. Scenario Failures
