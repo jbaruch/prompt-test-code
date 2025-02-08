@@ -1,87 +1,119 @@
-# Todo Windsurf
+# PROMPT-TEST-CODE Process Implementation
 
-A modern todo application built with test-first development approach using BDD (Behavior Driven Development).
+This repository demonstrates the PROMPT-TEST-CODE process, a rigorous approach to AI-driven software development that enforces test-first development through strict phase separation. The process is implemented using a simple todo application as an example.
 
-## Project Structure
+## Core Principles
 
-```
-src/
-  test/
-    spec/           # Phase 2: Feature specifications
-      features/     # Gherkin scenarios
-        todo_creation.feature
-        todo_listing.feature
-        todo_update.feature
-        todo_deletion.feature
-        todo_details.feature
-      contracts/    # Step interfaces
-        TodoCreationSteps.kt
-        TodoListingSteps.kt
-        TodoUpdateSteps.kt
-        TodoDeletionSteps.kt
-        TodoDetailsSteps.kt
-    impl/          # Phase 3: Test implementation
-      steps/       # Step definitions (coming soon)
-```
+1. **Strict Phase Separation**
+   - Analysis → Specification → Implementation
+   - No phase mixing allowed
+   - Clear approval gates between phases
+   - Continuous documentation
 
-## Features
+2. **Test-First Development**
+   - Tests as concrete specifications
+   - No implementation details in test phase
+   - Clear contract definitions
+   - Behavioral testing approach
 
-1. Todo Creation
-   - Create todos with title (required)
-   - Optional description, due date, and priority
+3. **Continuous Documentation**
+   - Required context files
+   - Progress tracking
+   - Technical decisions
+   - Gate validations
+
+## Process Structure
+
+### 1. Analysis Phase (STOP)
+- Required Context Files:
+  ```
+  product_context.md     # Intent and goals
+  active_context.md      # Current state
+  system_architecture.md # Architecture patterns
+  tech_context.md       # Stack, frameworks
+  progress.md           # Phase tracking
+  requirements.md       # Feature specs
+  test_scenarios.md     # Gherkin scenarios
+  technical_assumptions.md # Technical decisions
+  ```
+- Deliverables:
+  - Scope definition
+  - System boundaries
+  - Quality requirements
+  - Technical assumptions
+- USER approval required
+
+### 2. Specification Phase (STOP)
+- Directory Structure:
+  ```
+  src/
+    test/
+      spec/           # Phase 2 only
+        features/     # Gherkin scenarios
+        contracts/    # Step interfaces
+      impl/          # Phase 3 only
+        steps/       # Step definitions
+  ```
+- Feature Writing:
+  - Gherkin scenarios
+  - Ubiquitous language
+  - Happy paths and edge cases
+- Contract Creation:
+  - Step interfaces
+  - Clear contracts
+  - NO implementation details
+- USER approval required
+
+### 3. Implementation Phase
+- Entry Requirements:
+  - Approved feature files
+  - Complete step contracts
+  - Clear understanding
+- Implementation Cycle:
+  1. Pick ONE scenario
+  2. Document current scenario
+  3. Implement step definitions
+  4. Implement production code
+  5. Run ALL scenarios
+  6. Report results
+  7. Repeat if failures exist
+
+## Example Implementation: Todo Application
+
+This repository contains an example implementation of the PROMPT-TEST-CODE process using a todo application. The application demonstrates:
+
+1. Feature Specifications
+   - CRUD operations
    - Input validation
-   - Success/error feedback
+   - Error handling
+   - State management
 
-2. Todo Listing and Filtering
-   - View all todos
-   - Sort by due date or priority
-   - Filter by completion status
-   - Empty state handling
-
-3. Todo Updates
-   - Edit todo fields
-   - Toggle completion status
-   - Field validation
-   - Modification tracking
-
-4. Todo Deletion
-   - Single todo deletion
-   - Bulk delete completed todos
-   - Confirmation flow
-   - Success feedback
-
-## Development Phases
-
-1. ✅ Analysis Phase
-   - Defined requirements
-   - Established architecture
-   - Documented assumptions
-   - Created test scenarios
-
-2. ✅ Specification Phase
-   - Created Gherkin features
-   - Defined step contracts
-   - Validated scenarios
+2. Step Contracts
+   - Clear interfaces
    - No implementation details
-
-3. 🚧 Implementation Phase (Coming Soon)
-   - Step definitions
-   - Production code
-   - Integration tests
-   - Documentation updates
+   - Complete coverage
+   - Validation rules
 
 ## Getting Started
 
-Coming soon in Phase 3 (Implementation)
+1. Study the process:
+   - Review context files
+   - Understand phase separation
+   - Follow gate validations
+
+2. Examine the example:
+   - Feature files show specification approach
+   - Step contracts demonstrate interface design
+   - Progress tracking shows phase management
 
 ## Contributing
 
-This project is developed using a strict test-first approach. Please ensure:
+This project aims to refine the PROMPT-TEST-CODE process. Contributions should:
 
-1. All features have corresponding Gherkin scenarios
-2. All scenarios have step contracts
-3. No implementation details in Phase 2
-4. Clear separation of concerns
+1. Maintain strict phase separation
+2. Follow test-first principles
+3. Document all decisions
+4. Respect gate validations
 
 ## License
 

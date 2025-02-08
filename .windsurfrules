@@ -72,16 +72,19 @@ WORKFLOW PHASES
      - Cover edge cases
    * Contract Creation:
      - Generate step interfaces
-     - Define clear contracts
+     - Define domain contracts ← NEW
+     - Define repository contracts ← NEW
+     - Define service contracts ← NEW
      - NO implementation details
      - Document assumptions
    * Files Allowed:
      - test/spec/features/*.feature
-     - test/spec/contracts/*
+     - test/spec/contracts/steps/*Steps.kt
+     - test/spec/contracts/domain/*.kt ← NEW
    * Exit Criteria:
      - ALL scenarios written
      - ALL contracts defined
-     - NO implementation logic
+     - Domain model contracts complete ← NEW
      - Documentation complete
      ✓ USER approval required
 
@@ -89,23 +92,26 @@ WORKFLOW PHASES
    * Entry Requirements:
      - Approved feature files
      - Complete step contracts
+     - Complete domain contracts ← NEW
      - Clear understanding
      - USER approval received
+   * Implementation Rules: ← NEW SECTION
+     - Step implementations MUST only coordinate between UI and domain
+     - Business logic MUST be in domain classes
+     - Domain classes MUST implement domain contracts
+     - NO new behavior outside contracts
+     - NO modification of contract interfaces
    * Implementation Cycle:
      1. Pick ONE scenario
      2. Document current scenario
-     3. Implement step definitions
-     4. Implement production code
+     3. Implement domain classes
+     4. Implement step definitions
      5. Run ALL scenarios
      6. Report results
      7. Repeat if failures exist
    * Files Allowed:
      - src/main/*
      - test/impl/steps/*
-   * Completion:
-     - ALL scenarios pass
-     - NO feature changes
-     - Documentation updated
 
 ERROR HANDLING
 
