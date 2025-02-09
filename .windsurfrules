@@ -17,8 +17,9 @@ DIRECTORY STRUCTURE
 src/
   main/             # Phase 3 only: Implementation
   test/
-    spec/           # Phase 2 only: Feature specifications
+    resources/      # Feature files location
       features/     # Gherkin scenarios
+    spec/           # Phase 2 only: Feature specifications
       contracts/    # Step interfaces
     impl/           # Phase 3 only: Test implementation
       steps/        # Step definitions
@@ -72,19 +73,19 @@ WORKFLOW PHASES
      - Cover edge cases
    * Contract Creation:
      - Generate step interfaces
-     - Define domain contracts ← NEW
-     - Define repository contracts ← NEW
-     - Define service contracts ← NEW
+     - Define domain contracts
+     - Define repository contracts
+     - Define service contracts
      - NO implementation details
      - Document assumptions
    * Files Allowed:
      - test/spec/features/*.feature
      - test/spec/contracts/steps/*Steps.kt
-     - test/spec/contracts/domain/*.kt ← NEW
+     - test/spec/contracts/domain/*.kt
    * Exit Criteria:
      - ALL scenarios written
      - ALL contracts defined
-     - Domain model contracts complete ← NEW
+     - Domain model contracts complete
      - Documentation complete
      ✓ USER approval required
 
@@ -92,23 +93,68 @@ WORKFLOW PHASES
    * Entry Requirements:
      - Approved feature files
      - Complete step contracts
-     - Complete domain contracts ← NEW
+     - Complete domain contracts
      - Clear understanding
      - USER approval received
-   * Implementation Rules: ← NEW SECTION
+
+   * Setup Gate (STOP)
+     - Build configuration complete
+     - Dependencies defined
+     - Project structure verified
+     - Test infrastructure ready
+     ✓ Build MUST succeed
+
+   * Planning Gate (STOP)
+     - Complete component list documented
+     - Implementation sequence defined
+     - Integration points identified
+     - Test execution plan ready
+     ✓ Plan MUST be documented
+
+   * Implementation Sequence (ATOMIC)
+     1. Project Infrastructure
+        - Build system
+        - Project structure
+        - Development tools
+     2. Core Components
+        - Domain implementations
+        - Repository implementations
+        - Service implementations
+     3. Test Components
+        - Test infrastructure
+        - Step implementations
+        - Integration tests
+     4. Integration Verification
+        - Component wiring
+        - Full test execution
+     ✓ NO partial implementations
+
+   * Implementation Rules:
      - Step implementations MUST only coordinate between UI and domain
      - Business logic MUST be in domain classes
      - Domain classes MUST implement domain contracts
-     - NO new behavior outside contracts
-     - NO modification of contract interfaces
-   * Implementation Cycle:
-     1. Pick ONE scenario
-     2. Document current scenario
-     3. Implement domain classes
-     4. Implement step definitions
-     5. Run ALL scenarios
-     6. Report results
-     7. Repeat if failures exist
+     - NO partial implementations allowed
+     - NO untested code allowed
+     - Build MUST stay green
+     - Tests MUST run after changes
+     - Failures MUST be fixed immediately
+
+   * Critical Violations (IMMEDIATE STOP)
+     - Implementation without complete setup
+     - Implementation without complete plan
+     - Partial component implementations
+     - Untested features
+     - Broken integration
+     - Postponed fixes
+
+   * Recovery Process
+     1. STOP all work
+     2. Document current state
+     3. Revert to last known good state
+     4. Complete missing prerequisites
+     5. Restart implementation
+     6. Verify ALL components
+     
    * Files Allowed:
      - src/main/*
      - test/impl/steps/*
@@ -135,7 +181,7 @@ PHASE ARTIFACTS PROTECTION
 
 3. Protected Phase 2 Files (LOCKED in Phase 3+)
    * Feature Files:
-     - test/spec/features/*.feature
+     - test/resources/features/*.feature
    * Contract Interfaces:
      - test/spec/contracts/steps/*Steps.kt
      - test/spec/contracts/domain/*.kt
@@ -211,7 +257,7 @@ This protection is ABSOLUTE, CUMULATIVE, and PERMANENT across ALL phasesPHASE AR
 
 3. Protected Phase 2 Files (LOCKED in Phase 3+)
    * Feature Files:
-     - test/spec/features/*.feature
+     - test/resources/features/*.feature
    * Contract Interfaces:
      - test/spec/contracts/steps/*Steps.kt
      - test/spec/contracts/domain/*.kt
@@ -265,7 +311,7 @@ This protection is ABSOLUTE, CUMULATIVE, and PERMANENT across ALL phasesPHASE AR
    * Track completion status
    * Record issues and decisions
 
-This protection is ABSOLUTE, CUMULATIVE, and PERMANENT across ALL phases.
+This protection is ABSOLUTE, CUMULATIVE, and PERMANENT across ALL phases
 
 ERROR HANDLING
 
